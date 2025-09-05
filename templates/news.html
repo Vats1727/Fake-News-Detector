@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trending News</title>
+</head>
+<body>
+    <h2>Trending Headlines</h2>
+    {% for article in articles %}
+        <div style="border:1px solid gray; padding:10px; margin:10px;">
+            <h3>{{ article.title }}</h3>
+            <p><strong>Source:</strong> {{ article.source.name }}</p>
+            <p><strong>Description:</strong> {{ article.description }}</p>
+            <form action="/predict" method="post">
+                <input type="hidden" name="article" value="{{ article.title }} {{ article.description }}">
+                <button type="submit">Analyze</button>
+            </form>
+        </div>
+    {% endfor %}
+    <br><a href="/">Back to Home</a>
+</body>
+</html>
