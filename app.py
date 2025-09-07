@@ -2,7 +2,7 @@
 from flask import Flask, request, jsonify
 import joblib
 import newspaper
-from flask_cors import CORS  # Allow frontend requests
+from flask_cors import CORS  
 
 app = Flask(__name__)
 CORS(app)

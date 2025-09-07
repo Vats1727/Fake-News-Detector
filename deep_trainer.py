@@ -89,7 +89,7 @@ def train_lstm():
 
   
     loss, acc = model.evaluate(X_test, y_test, verbose=0)
-    print(f"✅ Deep Learning Model Accuracy: {acc:.4f}")
+    print(f" Deep Learning Model Accuracy: {acc:.4f}")
 
 if __name__ == "__main__":
     train_lstm()

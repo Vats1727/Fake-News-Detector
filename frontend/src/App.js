@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="container text-center mt-5">
-      <h1 className="mb-4"> Fake News Detector</h1>
+      <h1 className="mb-4">  News Headlines Detector</h1>
       <NewsForm setResult={setResult} />
       {result && <Result result={result} />}
     </div>
