@@ -39,7 +39,7 @@ def predict():
     prediction = model.predict(vect_text)[0]
     proba = model.decision_function(vect_text)[0]
 
-    result = " It Seems Real News" if prediction == 1 else "It seems ake News"
+    result = " It Seems Real News" if prediction == 1 else "It seems Fake News"
     confidence = round(abs(proba) * 100, 2)
 
     return jsonify({
@@ -49,5 +49,4 @@ def predict():
     })
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=True)
-
+    app.run(debug=True)
