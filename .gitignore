@@ -24,7 +24,7 @@ data/*.csv
 
 # Ignore trained models
 model/*.h5
-model/*.pkl
+
 
 
 # ---- Jupyter ----
