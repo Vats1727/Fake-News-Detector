@@ -6,3 +6,4 @@ nltk
 joblib
 newspaper3k
 lxml[html_clean]
+Flask-Cors
