@@ -2,10 +2,13 @@
 from flask import Flask, request, jsonify
 import joblib
 import newspaper
-from flask_cors import CORS  
+from flask_cors import CORS
+import os
 
 app = Flask(__name__)
-CORS(app)
+
+# Allow only your frontend domain (Vercel) to access
+CORS(app, resources={r"/*": {"origins": "https://news-headline-detector.vercel.app"}})
 
 # Load trained model + vectorizer
 model = joblib.load("./model/classifier.pkl")
@@ -38,7 +41,7 @@ def predict():
     prediction = model.predict(vect_text)[0]
     proba = model.decision_function(vect_text)[0]
 
-    result = " It Seems Real News" if prediction == 1 else "It seems ake News"
+    result = "It Seems Real News" if prediction == 1 else "It Seems Fake News"
     confidence = round(abs(proba) * 100, 2)
 
     return jsonify({
@@ -47,9 +50,6 @@ def predict():
         "confidence": f"{confidence}%"
     })
 
-import os
-
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     app.run(host="0.0.0.0", port=port)
-
