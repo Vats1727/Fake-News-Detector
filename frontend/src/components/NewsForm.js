@@ -10,7 +10,7 @@ function NewsForm({ setResult }) {
     setResult(null);
 
     try {
-      const response = await axios.post("http://127.0.0.1:5000/predict", {
+      const response = await axios.post("https://fake-news-detector-backend-yk7u.onrender.com/predict", {
         url,
         title,
       });
