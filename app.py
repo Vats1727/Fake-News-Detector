@@ -7,14 +7,14 @@ import os
 
 app = Flask(__name__)
 
-# Allow only your frontend domain (Vercel) to access
-CORS(app, resources={r"/*": {"origins": "https://news-headline-detector.vercel.app"}})
+# Allow both your Vercel frontend and localhost for testing
+CORS(app, resources={r"/*": {"origins": ["https://news-headline-detector.vercel.app", "http://localhost:3000"]}}, supports_credentials=True)
 
 # Load trained model + vectorizer
 model = joblib.load("./model/classifier.pkl")
 vectorizer = joblib.load("./model/vectorizer.pkl")
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["POST", "OPTIONS"])
 def predict():
     data = request.json
     url = data.get("url")
